@@ -1,0 +1,2 @@
+package service.impl; import service.EmergencyService; import dao.*; import dao.impl.*; import model.*; import java.util.*;
+public class EmergencyServiceImpl implements EmergencyService{ private SosDao sos=new SosDaoImpl(); private LostReportDao lost=new LostReportDaoImpl(); public void addSos(SosRecord s){sos.create(s);} public void addLost(LostReport r){lost.create(r);} public List<LostReport> lostReports(){return lost.findAll();}}

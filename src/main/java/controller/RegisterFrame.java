@@ -1,0 +1,2 @@
+package controller; import javax.swing.*; import util.JapandiTheme;
+public class RegisterFrame extends BaseFrame{ public RegisterFrame(){super("CareTranslate AI - 註冊",420,680);JPanel p=root();p.add(title("建立新帳號",50,80,250));String[] labs={"姓名","電子郵件","密碼","確認密碼"};for(int i=0;i<labs.length;i++){JTextField t=new JTextField(labs[i]);t.setBounds(50,160+i*55,310,42);p.add(t);}JButton b=JapandiTheme.primary("註冊");b.setBounds(50,410,310,45);b.addActionListener(e->{dispose();new RoleFrame().setVisible(true);});p.add(b);} }

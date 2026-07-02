@@ -1,0 +1,2 @@
+package controller; import javax.swing.*; import util.JapandiTheme; import java.awt.*;
+public class VoiceTranslateFrame extends BaseFrame{ public VoiceTranslateFrame(){super("語音翻譯",420,680);JPanel p=root();p.add(header("語音翻譯"));p.add(sub("MVP 示範：按下後顯示常用照護語翻譯",50,95,320));JButton mic=JapandiTheme.primary("按住說話");mic.setFont(new Font("Microsoft JhengHei",Font.BOLD,24));mic.setBounds(95,215,230,230);mic.addActionListener(e->JOptionPane.showMessageDialog(this,"中文：請喝水。\n越南文：Xin hãy uống nước.\n印尼文：Silakan minum air.\n菲律賓文：Please drink water."));p.add(mic);p.add(bottomNav());}}

@@ -1,0 +1,8 @@
+package dao.impl; import dao.PhraseDao; import model.Phrase; import util.DBUtil; import java.sql.*; import java.util.*;
+public class PhraseDaoImpl implements PhraseDao{
+ private static final List<Phrase> memory=new ArrayList<>(Arrays.asList(new Phrase(1,"飲食","請喝水。","Xin hãy uống nước.","Silakan minum air.","Please drink water."),new Phrase(2,"用藥","請吃藥。","Xin hãy uống thuốc.","Silakan minum obat.","Please take medicine."),new Phrase(3,"身體","你哪裡不舒服？","Bạn khó chịu ở đâu?","Bagian mana yang tidak nyaman?","Where do you feel uncomfortable?"),new Phrase(4,"緊急","請幫忙，病人走失了。","Xin giúp đỡ, bệnh nhân bị lạc.","Tolong bantu, pasien hilang.","Please help, the patient is missing.")));
+ public List<Phrase> findAll(){try(Connection c=DBUtil.getConnection();PreparedStatement ps=c.prepareStatement("select * from language_translations order by id desc");ResultSet rs=ps.executeQuery()){List<Phrase> list=new ArrayList<>();while(rs.next())list.add(new Phrase(rs.getInt("id"),rs.getString("category"),rs.getString("zh_text"),rs.getString("vi_text"),rs.getString("id_text"),rs.getString("fil_text")));return list;}catch(Exception e){return memory;}}
+ public Phrase findByChinese(String zh){for(Phrase p:findAll()) if(p.getZh().contains(zh)||zh.contains(p.getZh().replace("。",""))) return p; return memory.get(0);} 
+ public void create(Phrase p){try(Connection c=DBUtil.getConnection();PreparedStatement ps=c.prepareStatement("insert into language_translations(category,zh_text,vi_text,id_text,fil_text) values(?,?,?,?,?)")){ps.setString(1,p.getCategory());ps.setString(2,p.getZh());ps.setString(3,p.getVi());ps.setString(4,p.getIdText());ps.setString(5,p.getFil());ps.executeUpdate();}catch(Exception e){memory.add(p);}}
+ public void update(Phrase p){} public void delete(int id){}
+}

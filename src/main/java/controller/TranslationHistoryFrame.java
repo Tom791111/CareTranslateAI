@@ -1,0 +1,2 @@
+package controller; import javax.swing.*; import util.JapandiTheme;
+public class TranslationHistoryFrame extends BaseFrame{ public TranslationHistoryFrame(){super("翻譯歷史",420,680);JPanel p=root();p.add(header("翻譯歷史"));JTextArea a=new JTextArea("09:32  請喝水 → Xin hãy uống nước.\n08:15  請吃藥 → Xin hãy uống thuốc.\n07:50  你哪裡不舒服？ → Bạn khó chịu ở đâu?");a.setBounds(50,115,310,420);p.add(a);p.add(bottomNav());} }

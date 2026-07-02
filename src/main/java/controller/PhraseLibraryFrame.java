@@ -1,0 +1,2 @@
+package controller; import javax.swing.*; import util.JapandiTheme; import service.impl.*; import model.Phrase; import java.awt.*;
+public class PhraseLibraryFrame extends BaseFrame{ public PhraseLibraryFrame(){super("常用照護語",520,720);JPanel p=root();p.add(header("常用照護語"));JPanel list=JapandiTheme.card();list.setLayout(new GridLayout(0,1,8,8));list.setBounds(38,105,440,500);for(Phrase ph:new TranslationServiceImpl().phrases()){JButton b=JapandiTheme.button("「"+ph.getZh()+"」  /  "+ph.getVi());list.add(b);}p.add(list);p.add(bottomNav());} }

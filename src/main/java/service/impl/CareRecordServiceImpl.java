@@ -1,0 +1,2 @@
+package service.impl; import service.CareRecordService; import dao.CareRecordDao; import dao.impl.CareRecordDaoImpl; import model.CareRecord; import java.util.*;
+public class CareRecordServiceImpl implements CareRecordService{ private CareRecordDao dao=new CareRecordDaoImpl(); public List<CareRecord> list(){return dao.findAll();} public void add(CareRecord r){dao.create(r);} public void delete(int id){dao.delete(id);} }
